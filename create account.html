@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .create-account-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        .create-account-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .create-account-container input[type="email"],
+        .create-account-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .create-account-container button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-account-container button:hover {
+            background-color: #218838;
+        }
+
+        .create-account-container .error-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .create-account-container .login-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .create-account-container .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .create-account-container .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="create-account-container">
+        <h2>Create Account</h2>
+        <!-- Form for creating an account -->
+        <form id="create-account-form">
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+            <button type="submit">Create Account</button>
+            <p class="error-message" id="errorMessage"></p>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="signin.html">Sign In</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('create-account-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting traditionally
+
+            const email = event.target.email.value;
+            const password = event.target.password.value;
+            const confirmPassword = event.target.confirmPassword.value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Basic validation: Check if password and confirm password match
+            if (password !== confirmPassword) {
+                errorMessage.style.display = 'block';
+                errorMessage.innerText = 'Passwords do not match!';
+            } else {
+                errorMessage.style.display = 'none';
+                console.log("Email:", email);
+                console.log("Password:", password);
+
+                // Simulate account creation success by redirecting to a welcome page
+                window.location.href = 'welcome.html'; // Replace with your actual page after successful sign-up
+            }
+        });
+    </script>
+
+</body>
+</html>
+
